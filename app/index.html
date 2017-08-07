@@ -2,13 +2,13 @@
 <head>
   <meta charset="utf-8">
 
-  <title>ABCD Score</title>
-  <meta name="description" content="ABCD Score">
+  <title>ABCD2 Score</title>
+  <meta name="description" content="ABCD2 Score">
   <meta name="author" content="SitePoint">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./styles.css">
-
+  <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -19,24 +19,74 @@
   <div class="container bottom-buffer">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <div class="panel panel-success in-column-buffer">
+        <div class="panel panel-info in-column-buffer">
           <div class="panel-heading text-center">
-            <h1>ABCD2 Score Calculator</h1>
+            <h1>ABCD<sup>2</sup> Score Calculator</h1>
           </div>
           <div class="panel-body">
             <ul class="unstyled-list-bullet">
               <li>
                 <p>
-                  Input the patient features below and the the appropriate ABCD2 score will be returned
+                  Input the patient features below and the appropriate ABCD<sup>2</sup>  score will be returned.
                 </p>
               </li>
               <li>
-                <p class="bg-danger text-danger">Tool not validated for clinical use - for educational purposes only</p>  
+                <p class="bg-danger text-danger">Tool not validated for clinical use - for educational purposes only</p>
               </li>
             </ul>
             <h1>
-              The ABCD2 score is: <span id="patientScore">0 </span>
+              The ABCD<sup>2</sup>  score is: <span id="patientScore">0 </span>
             </h1>
+
+<!-- Our Risk Boxes -->
+<!-- Low Risk -->
+            <div id="lowRisk" class="col-sm-4 col-sm-offset-4">
+              <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                  <h3>0-3 points: Low Risk</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <li>2-Day Stroke Risk: 1.0%</li>
+                    <li>7-Day Stroke Risk: 1.2%</li>
+                    <li>90-Day Stroke Risk: 3.1%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+<!-- Medium Risk -->
+            <div id="mediumRisk" class="col-sm-4 col-sm-offset-4">
+              <div class="panel panel-warning">
+                <div class="panel-heading text-center">
+                  <h3>4-5 points: Moderate Risk</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <li>2-Day Stroke Risk: 4.1%</li>
+                    <li>7-Day Stroke Risk: 5.9%</li>
+                    <li>90-Day Stroke Risk: 9.8%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+<!-- High Risk -->
+            <div id="highRisk" class="col-sm-4 col-sm-offset-4">
+              <div class="panel panel-danger">
+                <div class="panel-heading text-center">
+                  <h3>6-7 points: High Risk</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <li>2-Day Stroke Risk: 8.1%</li>
+                    <li>7-Day Stroke Risk: 11.7%</li>
+                    <li>90-Day Stroke Risk: 17.8%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -49,44 +99,44 @@
           <div class="row form-group">
             <div>
               <label for="age" class="form-questions">
-                What is the Age?
+                What is the patient's age (years)?
               </label>
             </div>
             <div class="input-buffer col-sm-2 col-sm-offset-5">
-              <input type="number" name="age" class="form-control" min="0" max="120" required>
+              <input type="number" name="age" class="form-control" min="0" max="120" value="50" required>
             </div>
           </div>
 
           <div class="row form-group">
             <div>
               <label for="blood-pressure" class="form-questions">
-                What is the systolic blood pressure?
+                What is the systolic blood pressure in mmHg (millimeters of mercury)?
               </label>
             </div>
             <div class="input-buffer col-sm-2 col-sm-offset-5">
-              <input type="number" name="systolicBP" class="form-control" min="0" max="300" required>
+              <input type="number" name="systolicBP" class="form-control" min="0" max="300" value="130" required>
             </div>
           </div>
 
           <div class="row form-group">
             <div>
               <label for="blood-pressure" class="form-questions">
-                What is the diastolic blood pressure?
+                What is the diastolic blood pressure in mmHg (millimeters of mercury)?
               </label>
             </div>
             <div class="input-buffer col-sm-2 col-sm-offset-5">
-              <input type="number" name="diastolicBP" class="form-control" min="0" max="200" required>
+              <input type="number" name="diastolicBP" class="form-control" min="0" max="200" value="80" required>
             </div>
           </div>
 
             <div class="row form-group">
               <div>
                 <label for="duration" class="form-questions">
-                  How long did the symptoms last?
+                  How long did the symptoms last in minutes?
                 </label>
               </div>
               <div class="input-buffer col-sm-2 col-sm-offset-5">
-                <input type="number" name="duration" class="form-control" min="0" max="500" required>
+                <input type="number" name="duration" class="form-control" min="0" max="500" value="0" required>
               </div>
             </div>
 
@@ -95,7 +145,7 @@
                 What were the clinical features?
                 <div>
                   <label for="clinicalFeatures" class="radio-inline">
-                    <input type="radio" name="clinicalFeatures" value="None"> None
+                    <input type="radio" name="clinicalFeatures" value="None" checked="checked"> None
                   </label>
                   <label for="clinicalFeatures" class="radio-inline">
                     <input type="radio" name="clinicalFeatures" value="Speech Disturbance"> Speech Disturbance
@@ -115,12 +165,11 @@
                     <input type="radio" name="diabetes" value="true"> Yes
                   </label>
                   <label for="diabetes" class="radio-inline">
-                    <input type="radio" name="diabetes" value="false"> No
+                    <input type="radio" name="diabetes" value="false" checked="checked"> No
                   </label>
                 </div>
               </label>
             </div>
-          <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </form>
       </div>
     </div>
